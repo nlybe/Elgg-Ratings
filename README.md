@@ -3,8 +3,6 @@ Ratings & Comments
 
 ![Elgg 2.3](https://img.shields.io/badge/Elgg-2.3-orange.svg?style=flat-square)
 
-## Important: This repository has been moved to https://github.com/nlybe/ratings
-
 Advanced rating and comment functions for Elgg.
 
 This plugin can replaces the default comment form and with a new one, including star ratings for Elgg objects. 
