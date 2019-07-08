@@ -4,15 +4,13 @@
  * @package ratings
  */
 
-$lang = array(
+return [
 
     'ratings' => "Advanced rating and comment functions for Elgg",
     
     'ratings:comments' => "Reviews",
     'ratings:comments:post' => "Post review & rating",
     'ratings:comments:add:label' => "Rate this entity ",
-//    'ratings:comments:add:rating' => "Rate the product: ",
-//    'ratings:comments:add:rating:shop' => "Rate the shop: ",
     'ratings:comments:add:review' => "Write a review",
     'ratings:comments:rating:failure' => "An unexpected error occurred when adding your rating.",
     'ratings:comments:review:failure' => "An unexpected error occurred when adding your review.",
@@ -45,14 +43,9 @@ $lang = array(
     
     // settings
     'ratings:settings:buyers' => 'Reviews and ratings for buyers',
-//    'ratings:settings:buyers_expire' => 'Expiration days: ',
-//    'ratings:settings:buyers_expire:note' => '  Enter expiration period for reviews and ratings in days. Value must be numeric.',
     'ratings:settings:users_notify' => 'Notification days: ',
     'ratings:settings:users_notify:note' => '  Enter notification time after event triggered (e.g. purchase) in days for review and rating. Value must be numeric.',
     'ratings:settings:users_notify_by' => 'Send notification by: ',
     'ratings:settings:users_notify_by:note' => '  Enter a username who is supposed to send the notifications. Normally it will be a site administrator.',
 
-
-);
-
-add_translation("en", $lang);
+];

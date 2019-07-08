@@ -23,10 +23,11 @@ $inline = elgg_extract('inline', $vars, false);
 
 $entity_guid_input = '';
 if ($entity) {
-    $entity_guid_input = elgg_view('input/hidden', array(
+    $entity_guid_input = elgg_view_field([
+        '#type' => 'hidden',
         'name' => 'entity_guid',
         'value' => $entity->guid,
-    ));
+    ]);
 }
 
 // rattings addition
@@ -35,38 +36,47 @@ $comment_label = elgg_extract('comment_label', $vars, '');
 $comment_text = '';
 $comment_guid_input = '';
 if ($comment && $comment->canEdit()) {
-    $entity_guid_input = elgg_view('input/hidden', array(
+    $entity_guid_input = elgg_view_field([
+        '#type' => 'hidden',
         'name' => 'comment_guid',
         'value' => $comment->guid,
-    ));
+    ]);
     
     if (!$comment_label) {  // rattings addition
         $comment_label = elgg_echo("generic_comments:edit");
     }
-    $submit_input = elgg_view('input/submit', array('value' => elgg_echo('save')));
+    $submit_input = elgg_view_field([
+        '#type' => 'submit',
+        'value' => elgg_echo('save'),
+    ]);
     $comment_text = $comment->description;
 } else {
     if (!$comment_label) {  // rattings addition
         $comment_label = elgg_echo("generic_comments:add");
     }
-    $submit_input = elgg_view('input/submit', array('value' => elgg_echo('comment')));
+    $submit_input = elgg_view_field([
+        '#type' => 'submit',
+        'value' => elgg_echo('comment'),
+    ]);
 }
 
 $cancel_button = '';
 if ($comment) {
-    $cancel_button = elgg_view('input/button', array(
+    $cancel_button = elgg_view_field([
+        '#type' => 'button',
         'value' => elgg_echo('cancel'),
         'class' => 'elgg-button-cancel mlm',
         'href' => $entity ? $entity->getURL() : '#',
-    ));
+    ]);
 }
 
 if ($inline) {
-    $comment_input = elgg_view('input/text', array(
+    $comment_input = elgg_view_field([
+        '#type' => 'text',
         'name' => 'generic_comment',
         'value' => $comment_text,
         'required' => true
-    ));
+    ]);
 
     echo $comment_input . $entity_guid_input . $comment_guid_input . $submit_input;
 } else {
@@ -74,11 +84,12 @@ if ($inline) {
     elgg_require_js("ratings/ratings");
     elgg_load_css('jratings_css');
         
-    $comment_input = elgg_view('input/longtext', array(
+    $comment_input = elgg_view_field([
+        '#type' => 'longtext',
         'name' => 'generic_comment',
         'value' => $comment_text,
         'required' => true
-    ));
+    ]);
     
     // rattings addition
     $rate_settings = elgg_format_element('div', [
@@ -95,18 +106,22 @@ if ($inline) {
         'data-smallStarsPath' => elgg_get_simplecache_url('jratings/icons/small.png'),
     ], '');
     
-    $star_rating = elgg_view('input/hidden', array(
+    $star_rating = elgg_view_field([
+        '#type' => 'hidden',
         'name' => 'star_rating',
         'value' => '',
         'id' => 'star_rating'
-    ));
+    ]);
     
     $rate_label = elgg_extract('rate_label', $vars, '');
     if (!$rate_label) {
         $rate_label = elgg_echo("ratings:comments:add:label");
     }
     
-    $submit_input = elgg_view('input/submit', array('value' => elgg_echo('ratings:comments:post')));
+    $submit_input = elgg_view_field([
+        '#type' => 'submit',
+        'value' => elgg_echo('ratings:comments:post'),
+    ]);
     // rattings addition
       
 //    if (elgg_instanceof($vars["entity"], 'object', 'product')) {

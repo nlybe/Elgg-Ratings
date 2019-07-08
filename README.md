@@ -1,14 +1,13 @@
 Ratings & Comments
 ==================
 
-![Elgg 2.3](https://img.shields.io/badge/Elgg-2.3-orange.svg?style=flat-square)
+![Elgg 3.0](https://img.shields.io/badge/Elgg-3.0-orange.svg?style=flat-square)
 
 Advanced rating and comment functions for Elgg.
 
 This plugin can replaces the default comment form and with a new one, including star ratings for Elgg objects. 
 
 The default comment form of Elgg is not replaced automatically but some custom code can be used in order to show the ratings plugin forms.
-
 
 ## How to use it
 
@@ -31,10 +30,8 @@ echo RatingsOptions::ratings_elgg_view_comments($entity, $add_comment, $vars);
 elgg_view('ratings/ratings', ['entity' => $entity]);
 ```
 
-
-
 ## Improvements
+
 - Add option to replace the default comment form with ratings form in selected entities
 - Move max value from RatingsOptions to plugin settings in admin area
 - Replace the ratings js component
-

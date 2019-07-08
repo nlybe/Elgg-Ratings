@@ -4,8 +4,8 @@
  * @package ratings
  */
  
-require_once(dirname(__FILE__) . '/lib/hooks.php');
-require_once(dirname(__FILE__) . '/lib/widgets.php');
+// require_once(dirname(__FILE__) . '/lib/hooks.php');
+// require_once(dirname(__FILE__) . '/lib/widgets.php');
 
 elgg_register_event_handler('init', 'system', 'ratings_init');
 
@@ -25,10 +25,6 @@ function ratings_init() {
         'deps' => array('jquery'),
         'exports' => 'jratings',
     ));
-    
-    // register actions
-    $action_path = elgg_get_plugins_path() . 'ratings/actions/ratings';
-    elgg_register_action('ratings/comments/add', "$action_path/comments/add.php");
 }
 
 
