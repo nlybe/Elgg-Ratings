@@ -4,12 +4,16 @@
  * @package ratings
  */
 
+use Ratings\Elgg\Bootstrap;
+
+require_once(dirname(__FILE__) . '/lib/functions.php'); 
+
 return [
+    'bootstrap' => Bootstrap::class,
     'actions' => [
         'ratings/comments/add' => [],
     ],
     'routes' => [],
-    'widgets' => [],
     'views' => [
         'default' => [
             'jratings/icons/' => __DIR__ . '/vendors/jRating/jquery/icons',

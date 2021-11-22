@@ -9,6 +9,8 @@
  * @subpackage Comments
  */
 
+use Ratings\RatingsOptions;
+
 $entity_guid = (int) get_input('entity_guid', 0, false);
 $comment_guid = (int) get_input('comment_guid', 0, false);
 $comment_text = get_input('generic_comment');
@@ -55,16 +57,9 @@ if ($comment_guid) {
         return elgg_error_response(elgg_echo('generic_comment:failure'));
     }
    
-    if ($star_rating) {
-        // create star rating annotation
-        $annotation_sr = create_annotation(
-            $entity->guid, RatingsOptions::RATINGS_ANNOTATION, $star_rating, "", $user->guid, $entity->access_id
-        );    
-
-        // tell user annotation posted
-        if (!$annotation_sr) {
-            return elgg_error_response(elgg_echo('ratings:comments:rating:failure'));
-        }
+    // create star rating annotation
+    if ($star_rating && !$entity->annotate(RatingsOptions::RATINGS_ANNOTATION, $star_rating, $entity->access_id, $user->getGUID(),'integer')) {
+        return elgg_error_response(elgg_echo('ratings:comments:rating:failure'));
     }
 
     // Notify if poster wasn't owner
@@ -72,19 +67,19 @@ if ($comment_guid) {
         $owner = $entity->getOwnerEntity();
 
         notify_user(
-                $owner->guid, 
-                $user->guid, 
-                elgg_echo('ratings:comments:notify_buyer:subject', [], $owner->language), 
-                elgg_echo('ratings:comments:notify_buyer:body', [
-                    $entity->title,
-                    $comment_text,
-                    $comment->getURL(),
-                ], $owner->language), 
-                array(
-                    'object' => $comment,
-                    'action' => 'create',
-                    'summary' =>  elgg_echo('ratings:comments:notify_buyer:summary', [$entity->title], $owner->language),
-                )
+            $owner->guid, 
+            $user->guid, 
+            elgg_echo('ratings:comments:notify_buyer:subject', [], $owner->language), 
+            elgg_echo('ratings:comments:notify_buyer:body', [
+                $entity->title,
+                $comment_text,
+                $comment->getURL(),
+            ], $owner->language), 
+            array(
+                'object' => $comment,
+                'action' => 'create',
+                'summary' =>  elgg_echo('ratings:comments:notify_buyer:summary', [$entity->title], $owner->language),
+            )
         );
     }
     

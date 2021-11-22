@@ -9,6 +9,8 @@
  * @uses bool        $vars['inline']  Show a single line version of the form?
  */
 
+use Ratings\RatingsOptions;
+
 if (!elgg_is_logged_in()) {
     return;
 }
@@ -82,7 +84,7 @@ if ($inline) {
 } else {
 
     elgg_require_js("ratings/ratings");
-    elgg_load_css('jratings_css');
+    elgg_require_css('jratings.css');
         
     $comment_input = elgg_view_field([
         '#type' => 'longtext',
@@ -124,12 +126,6 @@ if ($inline) {
     ]);
     // rattings addition
       
-//    if (elgg_instanceof($vars["entity"], 'object', 'product')) {
-//        $rate_label = elgg_echo("ratings:comments:add:rating");
-//    } else if (elgg_instanceof($vars["entity"], 'object', 'shop')) {
-//        $rate_label = elgg_echo("ratings:comments:add:rating:shop");
-//    }
-//<div class="rate_stars" data-average="0" data-id="3"></div>
     echo <<<FORM
 <div>
     <label>$rate_label</label>

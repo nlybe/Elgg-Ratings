@@ -4,12 +4,13 @@
  * @package ratings
  */
 
-elgg_load_css('jratings_css');
+use Ratings\RatingsOptions;
+
+elgg_require_css('jratings.css');
 elgg_require_js("ratings/ratings");
 
 $entity = elgg_extract('entity', $vars, false);
-
-if (!($entity instanceof ElggEntity)) {
+if (!$entity instanceof ElggObject) {
     return;
 }
 
