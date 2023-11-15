@@ -1,7 +1,6 @@
-Ratings & Comments
-==================
+# Ratings & Comments
 
-![Elgg 3.3](https://img.shields.io/badge/Elgg-3.3-orange.svg?style=flat-square)
+![Elgg 4.3](https://img.shields.io/badge/Elgg-4.3-orange.svg?style=flat-square)
 
 Advanced rating and comment functions for Elgg.
 

@@ -51,17 +51,15 @@ if ($comment_guid) {
     $comment->owner_guid = $user->getGUID();
     $comment->container_guid = $entity->getGUID();
     $comment->access_id = $entity->access_id;
-    $guid = $comment->save();
-
-    if (!$guid) {
+    if (!$comment->save()) {
         return elgg_error_response(elgg_echo('generic_comment:failure'));
     }
-   
+
     // create star rating annotation
     if ($star_rating && !$entity->annotate(RatingsOptions::RATINGS_ANNOTATION, $star_rating, $entity->access_id, $user->getGUID(),'integer')) {
         return elgg_error_response(elgg_echo('ratings:comments:rating:failure'));
     }
-
+    
     // Notify if poster wasn't owner
     if ($entity->owner_guid != $user->guid) {
         $owner = $entity->getOwnerEntity();
@@ -75,11 +73,11 @@ if ($comment_guid) {
                 $comment_text,
                 $comment->getURL(),
             ], $owner->language), 
-            array(
+            [
                 'object' => $comment,
                 'action' => 'create',
                 'summary' =>  elgg_echo('ratings:comments:notify_buyer:summary', [$entity->title], $owner->language),
-            )
+            ]
         );
     }
     
@@ -87,10 +85,10 @@ if ($comment_guid) {
     elgg_create_river_item([
 		'view' => 'river/object/comment/create',
 		'action_type' => 'comment',
-		'object_guid' => $guid,
-		'target_guid' => $entity_guid,
+		'object_guid' => $comment->guid,
+		'target_guid' => $entity->guid,
 	]);
-
+    
     $success_message = elgg_echo('generic_comment:posted');
 }
 

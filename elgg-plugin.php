@@ -9,6 +9,11 @@ use Ratings\Elgg\Bootstrap;
 require_once(dirname(__FILE__) . '/lib/functions.php'); 
 
 return [
+    'plugin' => [
+        'name' => 'Ratings',
+		'version' => '4.4',
+		'dependencies' => [],
+	],
     'bootstrap' => Bootstrap::class,
     'actions' => [
         'ratings/comments/add' => [],
