@@ -11,7 +11,7 @@ require_once(dirname(__FILE__) . '/lib/functions.php');
 return [
     'plugin' => [
         'name' => 'Ratings',
-		'version' => '4.4',
+		'version' => '5.5',
 		'dependencies' => [],
 	],
     'bootstrap' => Bootstrap::class,
@@ -25,6 +25,10 @@ return [
             'jratings.js' => __DIR__ . '/vendors/jRating/jquery/jRating.jquery.js',
             'jratings.css' => __DIR__ . '/vendors/jRating/jquery/jRating.jquery.css',            
         ],
-    ],
-    'upgrades' => [],
+    ],  
+	'view_extensions' => [
+		'elgg.css' => [
+			'ratings/ratings.css' => [],
+		],
+	],
 ];

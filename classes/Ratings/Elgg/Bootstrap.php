@@ -25,14 +25,11 @@ class Bootstrap extends DefaultPluginBootstrap {
 	 * @return void
 	 */
 	protected function initViews() {
-				
-		// register extra css
-		elgg_extend_view('elgg.css', 'ratings/ratings.css');
-		//elgg_extend_view('css/admin', 'ratings/ratings_admin.css');
-		
-		elgg_define_js('jratings', array(
+
+		elgg_define_js('jratings', [
 			'deps' => array('jquery'),
 			'exports' => 'jratings',
-		));
+		]);
+		
 	}
 }

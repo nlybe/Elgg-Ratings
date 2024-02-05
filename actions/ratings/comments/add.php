@@ -24,7 +24,7 @@ if ($comment_guid) {
     // Edit an existing comment
     $comment = get_entity($comment_guid);
 
-    if (!$comment instanceof ElggComment) {
+    if (!$comment instanceof \ElggComment) {
         return elgg_error_response(elgg_echo('generic_comment:notfound'));
     }
     if (!$comment->canEdit()) {

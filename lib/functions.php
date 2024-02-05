@@ -18,7 +18,7 @@
  * @return string|false Rendered comments or false on failure
  */
 function ratings_elgg_view_comments($entity, $add_comment = true, $vars = []) {
-    if (!($entity instanceof ElggEntity)) {
+    if (!($entity instanceof \ElggEntity)) {
         return false;
     }
 

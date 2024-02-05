@@ -1,4 +1,8 @@
-# Change Log
+# Elgg Ratings Plugin Change Log
+
+## 5.5 (Dec 2023)
+
+- Upgraded for Elgg 5.x compatibility
 
 ## 4.4 (Nov 2023)
 
